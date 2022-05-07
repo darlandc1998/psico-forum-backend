@@ -1,11 +1,12 @@
 {
   "name": "psicoforum",
   "version": "1.0.0",
-  "main": "./build/shared/infra/http/server.ts",
+  "main": "./build/shared/infra/http/server.js",
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./build && tsc --experimentalDecorators 'true' --emitDecoratorMetadata 'true' && tsc-alias",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/infra/http/server.ts",
+    "production": "node ./build/shared/infra/http/server.js",
     "lint": "eslint --fix --ext .js,.ts,.json .",
     "test": "jest"
   },

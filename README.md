@@ -44,5 +44,17 @@ yarn test
 yarn build
 ```
 
+###### Create image from Dockerfile
+
+```
+docker build . -t <your_username>/psico-forum
+```
+
+###### Run imagem created by Dockerfile
+
+```
+docker run -e APP_PORT="APP_PORT" -e DATABASE_URL="DATABASE_URL" -p 3000:3000 -d <your_username>/psico-forum
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
