@@ -17,4 +17,20 @@ model User {
   updated_at DateTime @default(now())
 
   @@map("users")
+  Post Post[]
+}
+
+model Post {
+  id         Int      @id @default(autoincrement())
+  title      String
+  text       String
+  cover      String?
+  published  Boolean  @default(false)
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  author_id  Int
+  author     User     @relation(fields: [author_id], references: [id])
+
+  @@map("posts")
 }
