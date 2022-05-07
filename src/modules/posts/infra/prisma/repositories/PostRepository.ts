@@ -22,7 +22,7 @@ class PostRepository implements IPostRepository {
 
   async update(post: Post): Promise<Post | undefined> {
     return this.prismaClient?.post.update({
-      where: { id: post.id },
+      where: { id: Number(post.id) },
       data: {
         title: post.title,
         text: post.text,
