@@ -19,6 +19,20 @@ class PostRepository implements IPostRepository {
       },
     });
   }
+
+  async update(post: Post): Promise<Post | undefined> {
+    return this.prismaClient?.post.update({
+      where: { id: post.id },
+      data: {
+        title: post.title,
+        text: post.text,
+        cover: post.cover,
+        active: post.active,
+        published: post.published,
+        updated_at: new Date(),
+      },
+    });
+  }
 }
 
 export default PostRepository;
