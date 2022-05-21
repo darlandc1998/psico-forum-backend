@@ -16,6 +16,10 @@ class FakePostRepository implements IPostRepository {
     this.posts.push(post);
     return post;
   }
+
+  async list(): Promise<Post[]> {
+    return this.posts;
+  }
 }
 
 export default FakePostRepository;
