@@ -19,6 +19,6 @@ describe("CreatePost", () => {
       authorId: -1,
     };
     const postCreated = await createPostService.execute(newPost);
-    expect(postCreated).toMatchObject({ id: -1 });
+    expect(postCreated).toMatchObject({ id: 1 });
   });
 });
