@@ -42,6 +42,16 @@ postsRouter.put(
   updatePostController.update,
 );
 
-postsRouter.get("/", listPostController.index);
+postsRouter.get(
+  "/",
+  celebrate({
+    [Segments.QUERY]: {
+      published: Joi.boolean(),
+      active: Joi.boolean(),
+      author: Joi.number(),
+    },
+  }),
+  listPostController.index,
+);
 
 export default postsRouter;

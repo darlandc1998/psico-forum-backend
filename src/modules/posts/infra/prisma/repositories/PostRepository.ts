@@ -40,6 +40,12 @@ class PostRepository implements IPostRepository {
     return (
       this.prismaClient?.post.findMany({
         where: getFiltersToList(filters),
+        orderBy: {
+          created_at: "asc",
+        },
+        include: {
+          author: true,
+        },
       }) || []
     );
   }
