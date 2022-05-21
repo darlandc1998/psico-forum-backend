@@ -23,6 +23,7 @@ postsRouter.post(
       text: Joi.string().required(),
       conver: Joi.string(),
       authorId: Joi.number().required(),
+      published: Joi.boolean(),
     },
   }),
   createPostController.create,

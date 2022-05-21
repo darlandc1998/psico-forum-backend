@@ -20,7 +20,7 @@ class CreatePostService {
       text: postDTO.title,
       cover: postDTO.cover || null,
       author_id: postDTO.authorId,
-      published: false,
+      published: postDTO.published || false,
       active: true,
       created_at: new Date(),
       updated_at: new Date(),

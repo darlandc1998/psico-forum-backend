@@ -3,5 +3,6 @@ export default interface ICreatePostDTO {
   title: string;
   text: string;
   cover: string | null;
+  published?: boolean;
   authorId: number;
 }

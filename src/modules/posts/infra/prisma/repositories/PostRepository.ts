@@ -18,6 +18,7 @@ class PostRepository implements IPostRepository {
         text: post.text,
         cover: post.cover,
         author_id: post.author_id,
+        published: post.published,
       },
     });
   }
