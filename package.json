@@ -20,6 +20,7 @@
     "express-async-errors": "^3.1.1",
     "express-rate-limit": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
+    "query-string": "^7.1.1",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.6.0",
     "uuidv4": "^6.2.13"

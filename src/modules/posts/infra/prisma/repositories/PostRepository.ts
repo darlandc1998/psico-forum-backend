@@ -1,6 +1,8 @@
 import IPostRepository from "@modules/posts/repositories/IPostRepository";
+import Filter from "@modules/posts/types/Filter";
 import { PrismaClient } from "@prisma/client";
 import Post from "../entities/Post";
+import { getFiltersToList } from "./PostRepositoryRules";
 
 class PostRepository implements IPostRepository {
   prismaClient: PrismaClient | null = null;
@@ -34,8 +36,16 @@ class PostRepository implements IPostRepository {
     });
   }
 
-  async list(): Promise<Post[]> {
-    return this.prismaClient?.post.findMany() || [];
+  async list(filters?: Filter): Promise<Post[]> {
+    return (
+      this.prismaClient?.post.findMany({
+        where: getFiltersToList(filters),
+      }) || []
+    );
+  }
+
+  async deleteAll(): Promise<void> {
+    this.prismaClient?.post.deleteMany();
   }
 }
 
