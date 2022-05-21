@@ -5,11 +5,13 @@ import ensureAuthenticated from "@modules/users/infra/http/middlewares/ensureAut
 
 import CreatePostController from "../controllers/CreatePostController";
 import UpdatePostController from "../controllers/UpdatePostController";
+import ListPostController from "../controllers/ListPostController";
 
 const postsRouter = Router();
 
 const createPostController = new CreatePostController();
 const updatePostController = new UpdatePostController();
+const listPostController = new ListPostController();
 
 postsRouter.use(ensureAuthenticated);
 
@@ -39,5 +41,7 @@ postsRouter.put(
   }),
   updatePostController.update,
 );
+
+postsRouter.get("/", listPostController.index);
 
 export default postsRouter;

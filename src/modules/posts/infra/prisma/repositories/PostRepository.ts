@@ -33,6 +33,10 @@ class PostRepository implements IPostRepository {
       },
     });
   }
+
+  async list(): Promise<Post[]> {
+    return this.prismaClient?.post.findMany() || [];
+  }
 }
 
 export default PostRepository;
