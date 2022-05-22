@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import ICreateUserDTO from "../../../dtos/ICreateUserDTO";
+import ICreateUserDTO from "../../../dtos/input/ICreateUserDTO";
 import CreateUserService from "../../../services/CreateUserService";
 
 export default class CreateUserController {

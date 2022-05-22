@@ -1,6 +1,6 @@
-import User from "../infra/prisma/entities/User";
 import { injectable, inject } from "tsyringe";
 import IUserRepository from "../repositories/IUserRepository";
+import IListUserDTO from "../dtos/output/IListUserDTO";
 
 @injectable()
 class ListUserService {
@@ -13,9 +13,16 @@ class ListUserService {
     this.userRepository = userRepository;
   }
 
-  public async execute(): Promise<User[] | null> {
+  public async execute(): Promise<IListUserDTO[] | null> {
     const users = await this.userRepository.findAllActive();
-    return users;
+    const usersDTO = users.map(item => ({
+      id: item.id,
+      name: item.name,
+      email: item.email,
+      active: item.active,
+      createdAt: item.created_at,
+    }));
+    return usersDTO;
   }
 }
 

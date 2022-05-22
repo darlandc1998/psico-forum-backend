@@ -22,7 +22,7 @@ describe("CreateUser", () => {
       name: "Fake",
       email: "fake@hotmail.com",
       password: "123456",
-      password_confirmation: "123456",
+      passwordConfirmation: "123456",
     });
 
     expect(newUser).toEqual(
@@ -35,7 +35,7 @@ describe("CreateUser", () => {
       name: "Fake",
       email: "fake@hotmail.com",
       password: "123456",
-      password_confirmation: "123456",
+      passwordConfirmation: "123456",
     };
 
     await createUserService.execute(user);
@@ -51,7 +51,7 @@ describe("CreateUser", () => {
         name: "Fake",
         email: "fake@hotmail.com",
         password: "123",
-        password_confirmation: "123456",
+        passwordConfirmation: "123456",
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

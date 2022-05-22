@@ -74,27 +74,22 @@ usersRouter.use(ensureAuthenticated);
  *                  type: boolean
  *                createdAt:
  *                  type: Date
- *                updatedAt:
- *                  type: Date
  *              example:
  *                - id: 1
  *                  name: João
  *                  email: joão@teste.com.br
  *                  active: true
  *                  createdAt: "2022-04-29T22:53:09.237Z"
- *                  updatedAt: "2022-04-29T22:53:09.237Z"
  *                - id: 2
  *                  name: Pedro
  *                  email: pedro@teste.com.br
  *                  active: true
  *                  createdAt: "2022-04-30T08:00:00.237Z"
- *                  updatedAt: "2022-04-30T08:00:00.237Z"
  *                - id: 3
  *                  name: Thiago
  *                  email: Thiago@teste.com.br
  *                  active: true
  *                  createdAt: "2022-05-05T09:00:00.237Z"
- *                  updatedAt: "2022-05-05T09:00:00.237Z"
  */
 usersRouter.get("/", listUserController.index);
 /**
@@ -144,19 +139,10 @@ usersRouter.get("/", listUserController.index);
  *                  type: string
  *                email:
  *                  type: string
- *                active:
- *                  type: boolean
- *                createdAt:
- *                  type: Date
- *                updatedAt:
- *                  type: Date
  *              example:
  *                id: 1
  *                name: João
  *                email: joão@teste.com.br
- *                active: true
- *                createdAt: "2022-04-29T22:53:09.237Z"
- *                updatedAt: "2022-04-29T22:53:09.237Z"
  *       500:
  *         description: Some server error
  */
