@@ -101,8 +101,8 @@ postsRouter.use(ensureAuthenticated);
  *          example:
  *            title: First post
  *            text: First post
- *            authorId: 1
  *            published: true
+ *            authorId: 1
  *     responses:
  *       200:
  *         description: The post was successfully created
@@ -125,8 +125,8 @@ postsRouter.use(ensureAuthenticated);
  *                id: 1
  *                title: First post
  *                text: First post
- *                authorId: 1
  *                published: true
+ *                authorId: 1
  *       500:
  *         description: Some server error
  */
@@ -246,7 +246,7 @@ postsRouter.put(
  *         schema:
  *          type: boolean
  *       - in: query
- *         name: authorId
+ *         name: author
  *         description: Get all posts by author
  *         schema:
  *          type: integer
@@ -274,8 +274,8 @@ postsRouter.put(
  *                  type: Date
  *                updatedAt:
  *                  type: Date
- *                authorId:
- *                  type: integer
+ *                author:
+ *                  type: object
  *              example:
  *                - id: 1
  *                  title: First post
@@ -285,7 +285,7 @@ postsRouter.put(
  *                  active: true
  *                  createdAt: "2022-04-29T22:53:09.237Z"
  *                  updatedAt: "2022-04-29T22:53:09.237Z"
- *                  authorId: 1
+ *                  author: {"id":5,"name":"João"}
  *                - id: 2
  *                  title: Second post
  *                  text: Second post
@@ -293,7 +293,7 @@ postsRouter.put(
  *                  active: false
  *                  createdAt: "2022-05-01T10:00:00.007Z"
  *                  updatedAt: "2022-05-01T10:00:00.007Z"
- *                  authorId: 1
+ *                  author: {"id":5,"name":"João"}
  *                - id: 3
  *                  title: Third post
  *                  text: Third post
@@ -301,7 +301,7 @@ postsRouter.put(
  *                  active: false
  *                  createdAt: "2022-06-01T10:00:00.007Z"
  *                  updatedAt: "2022-06-01T10:00:00.007Z"
- *                  authorId: 2
+ *                  author: {"id":6,"name":"Pedro"}
  */
 postsRouter.get(
   "/",

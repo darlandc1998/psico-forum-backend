@@ -1,4 +1,4 @@
-import { Post as PostPrisma } from "@prisma/client";
+import { Post as PostPrisma, User as UserPrisma } from "@prisma/client";
 
 class Post implements PostPrisma {
   id: number;
@@ -10,6 +10,7 @@ class Post implements PostPrisma {
   created_at: Date;
   updated_at: Date;
   author_id: number;
+  author?: UserPrisma;
 
   constructor(
     id: number,

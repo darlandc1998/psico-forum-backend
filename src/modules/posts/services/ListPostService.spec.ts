@@ -1,4 +1,3 @@
-import Post from "@modules/posts/infra/prisma/entities/Post";
 import FakePostRepository from "../repositories/fakes/FakePostRepository";
 import IPostRepository from "../repositories/IPostRepository";
 import Filters from "../types/Filter";
@@ -36,7 +35,7 @@ describe("ListPost", () => {
       authorId: -2,
     };
     await createPostService.execute(postTwo);
-    const posts: Post[] = await listPostService.execute();
+    const posts = await listPostService.execute();
     expect(posts).toHaveLength(2);
   });
 
@@ -66,7 +65,7 @@ describe("ListPost", () => {
       published: true,
     };
 
-    const posts: Post[] = await listPostService.execute(filters);
+    const posts = await listPostService.execute(filters);
     expect(posts).toHaveLength(1);
   });
 
@@ -96,7 +95,7 @@ describe("ListPost", () => {
       active: true,
     };
 
-    const posts: Post[] = await listPostService.execute(filters);
+    const posts = await listPostService.execute(filters);
     expect(posts).toHaveLength(1);
   });
 
@@ -118,7 +117,7 @@ describe("ListPost", () => {
     const filters: Filters = {
       author: -1,
     };
-    const posts: Post[] = await listPostService.execute(filters);
+    const posts = await listPostService.execute(filters);
     expect(posts).toHaveLength(2);
   });
 });

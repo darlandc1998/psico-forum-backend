@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import IUpdatePostDTO from "../dtos/IUpdatePostDTO";
+import IUpdatePostDTO from "../dtos/input/IUpdatePostDTO";
+import IUpdatedPostDTO from "../dtos/output/IUpdatedPostDTO";
 import IPostRepository from "../repositories/IPostRepository";
 
 @injectable()
@@ -13,7 +14,7 @@ class UpdatePostService {
     this.postRepository = postRepository;
   }
 
-  async execute(post: IUpdatePostDTO): Promise<IUpdatePostDTO | undefined> {
+  async execute(post: IUpdatePostDTO): Promise<IUpdatedPostDTO | undefined> {
     await this.postRepository.update({
       id: post.id,
       title: post.title,

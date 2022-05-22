@@ -1,5 +1,7 @@
 import { injectable, inject } from "tsyringe";
-import ICreatePostDTO from "../dtos/ICreatePostDTO";
+import AppError from "@shared/errors/AppError";
+import ICreatePostDTO from "../dtos/input/ICreatePostDTO";
+import ICreatedPostDTO from "../dtos/output/ICreatedPostDTO";
 import IPostRepository from "../repositories/IPostRepository";
 
 @injectable()
@@ -13,7 +15,7 @@ class CreatePostService {
     this.postRepository = postRepository;
   }
 
-  async execute(postDTO: ICreatePostDTO): Promise<ICreatePostDTO | undefined> {
+  async execute(postDTO: ICreatePostDTO): Promise<ICreatedPostDTO | undefined> {
     const post = await this.postRepository.create({
       id: postDTO.id || -1,
       title: postDTO.title,
@@ -25,7 +27,19 @@ class CreatePostService {
       created_at: new Date(),
       updated_at: new Date(),
     });
-    return { ...postDTO, id: post?.id };
+
+    if (!post) {
+      throw new AppError("Error save the new post!");
+    }
+
+    return {
+      id: post.id,
+      title: post.title,
+      text: post.text,
+      cover: post?.cover,
+      published: post.published,
+      authorId: post.author_id,
+    };
   }
 }
 
