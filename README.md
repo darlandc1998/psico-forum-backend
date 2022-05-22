@@ -56,5 +56,9 @@ docker build . -t <your_username>/psico-forum
 docker run -e APP_PORT="APP_PORT" -e DATABASE_URL="DATABASE_URL" -p 3000:3000 -d <your_username>/psico-forum
 ```
 
+###### Preview API documentation
+
+Go to ${URL_APPLICATION}/api-doc to see the api documentation
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
