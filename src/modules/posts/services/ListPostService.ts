@@ -19,6 +19,7 @@ class ListPostService {
     const postsDTO = posts.map(item => ({
       id: item.id,
       title: item.title,
+      text: item.text,
       cover: item.cover,
       published: item.published,
       active: item.active,
