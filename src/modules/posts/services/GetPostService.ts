@@ -1,4 +1,5 @@
 import { injectable, inject } from "tsyringe";
+import AppError from "@shared/errors/AppError";
 import IGetPostDTO from "../dtos/output/IGetPostDTO";
 import IPostRepository from "../repositories/IPostRepository";
 
@@ -14,17 +15,21 @@ class GetPostService {
   }
 
   async execute(idPost: number): Promise<IGetPostDTO> {
+    const post = await this.postRepository.getById(idPost);
+
+    if (!post) throw new AppError("Post not found!");
+
     return {
-      id: idPost,
-      title: "Title 1",
-      text: "Text 1",
-      cover: null,
-      published: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      id: post.id,
+      title: post.title,
+      text: post.text,
+      cover: post.cover,
+      published: post.published,
+      createdAt: post.created_at,
+      updatedAt: post.updated_at,
       author: {
-        id: 1,
-        name: "Fake author",
+        id: post.author?.id,
+        name: post.author?.name,
       },
     };
   }

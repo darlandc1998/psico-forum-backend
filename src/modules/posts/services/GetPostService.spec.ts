@@ -27,4 +27,11 @@ describe("GetPost", () => {
     const getPostCreated = await getPostService.execute(postCreated.id);
     expect(getPostCreated).toMatchObject({ id: 1 });
   });
+
+  it("Should not be to get a post by id", async () => {
+    const ID_POST_NOT_CREATED = -1;
+    await expect(
+      getPostService.execute(ID_POST_NOT_CREATED),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });

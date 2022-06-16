@@ -56,6 +56,9 @@ class PostRepository implements IPostRepository {
       where: {
         id: idPost,
       },
+      include: {
+        author: true,
+      },
     });
   }
 
