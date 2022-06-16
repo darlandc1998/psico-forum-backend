@@ -316,7 +316,53 @@ postsRouter.get(
   }),
   listPostController.index,
 );
-
+/**
+ * @swagger
+ * /posts/:id:
+ *   get:
+ *     summary: Return one post by ID
+ *     tags: [Posts]
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the post you want to search
+ *     responses:
+ *       200:
+ *         description: The post found
+ *         content:
+ *           application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                id:
+ *                  type: integer
+ *                title:
+ *                  type: string
+ *                text:
+ *                  type: string
+ *                cover:
+ *                  type: string
+ *                published:
+ *                  type: boolean
+ *                createdAt:
+ *                  type: Date
+ *                updatedAt:
+ *                  type: Date
+ *                author:
+ *                  type: object
+ *              example:
+ *                id: 1
+ *                title: First post
+ *                text: First post
+ *                cover: cover
+ *                published: true
+ *                createdAt: "2022-04-29T22:53:09.237Z"
+ *                updatedAt: "2022-04-29T22:53:09.237Z"
+ *                author: {"id":5,"name":"João"}
+ */
 postsRouter.get(
   "/:id",
   celebrate({ [Segments.PARAMS]: { id: Joi.number().required() } }),
