@@ -28,6 +28,10 @@ class FakePostRepository implements IPostRepository {
     );
   }
 
+  async getById(id: number): Promise<Post | null | undefined> {
+    return this.posts.find(item => item.id === id);
+  }
+
   async deleteAll(): Promise<void> {
     this.posts = [];
   }

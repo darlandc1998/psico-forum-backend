@@ -51,6 +51,14 @@ class PostRepository implements IPostRepository {
     );
   }
 
+  async getById(idPost: number): Promise<Post | null | undefined> {
+    return this.prismaClient?.post.findUnique({
+      where: {
+        id: idPost,
+      },
+    });
+  }
+
   async deleteAll(): Promise<void> {
     this.prismaClient?.post.deleteMany();
   }
