@@ -6,12 +6,14 @@ import ensureAuthenticated from "@modules/users/infra/http/middlewares/ensureAut
 import CreatePostController from "../controllers/CreatePostController";
 import UpdatePostController from "../controllers/UpdatePostController";
 import ListPostController from "../controllers/ListPostController";
+import GetPostController from "../controllers/GetPostController";
 
 const postsRouter = Router();
 
 const createPostController = new CreatePostController();
 const updatePostController = new UpdatePostController();
 const listPostController = new ListPostController();
+const getPostController = new GetPostController();
 
 postsRouter.use(ensureAuthenticated);
 
@@ -313,6 +315,12 @@ postsRouter.get(
     },
   }),
   listPostController.index,
+);
+
+postsRouter.get(
+  "/:id",
+  celebrate({ [Segments.PARAMS]: { id: Joi.number().required() } }),
+  getPostController.index,
 );
 
 export default postsRouter;
